@@ -1,4 +1,4 @@
-import { Github, Terminal } from "lucide-react";
+import { Github } from "lucide-react";
 import ThemeToggle from "@/components/landing/ThemeToggle";
 
 export const Navbar = () => {
@@ -13,13 +13,7 @@ export const Navbar = () => {
           data-testid="nav-logo"
           className="flex items-center gap-2 group"
         >
-          <span className="relative flex h-8 w-8 items-center justify-center rounded-md bg-gradient-to-br from-orange-400 to-red-500 dark:from-orange-500 dark:to-red-600 shadow-[0_0_18px_rgba(234,88,12,0.3)] dark:shadow-[0_0_18px_rgba(234,88,12,0.5)]">
-            <Terminal className="h-4 w-4 text-white dark:text-black" strokeWidth={2.5} />
-          </span>
-          <span className="font-mono text-sm tracking-tight text-slate-900 dark:text-white">
-            RepoReview
-            <span className="text-orange-600 dark:text-orange-500">.yml</span>
-          </span>
+          <img src="/logo.jpg" alt="RepoReview" className="h-10 w-auto object-contain rounded-md" />
         </a>
 
         <div className="hidden md:flex items-center gap-8 font-mono text-xs uppercase tracking-widest text-slate-600 dark:text-slate-400">
