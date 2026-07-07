@@ -1,4 +1,4 @@
-import { PlayCircle, Github, Server } from "lucide-react";
+import { PlayCircle } from "lucide-react";
 
 export const Demos = () => {
   return (
@@ -23,59 +23,39 @@ export const Demos = () => {
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-10">
-          <DemoCard
-            title="The Reviewer in Action"
-            subtitle="Automated, line-by-line analysis before you even ask."
-            videoSrc="/major.mp4"
-            icon={PlayCircle}
-            id="major-demo"
-          />
-          <DemoCard
-            title="GitHub Integration"
-            subtitle="Zero-dashboards. Seamlessly integrated into your CI/CD."
-            videoSrc="/MAJOR 2.mp4"
-            icon={Github}
-            id="github-demo"
-          />
+        <div className="flex justify-center">
+          <div
+            data-testid="demo-card-main"
+            className="group relative w-full max-w-4xl overflow-hidden rounded-xl border border-slate-200 dark:border-white/10 bg-slate-50 dark:bg-[#0f0f0f] shadow-sm transition-all duration-300 hover:border-orange-500/40"
+          >
+            {/* Header */}
+            <div className="flex items-center gap-4 px-6 py-5 border-b border-slate-200 dark:border-white/5">
+              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-orange-200 dark:border-orange-500/30 bg-orange-100 dark:bg-orange-500/10 text-orange-600 dark:text-orange-400">
+                <PlayCircle className="h-5 w-5" strokeWidth={2} />
+              </div>
+              <div>
+                <h3 className="font-display text-lg font-semibold text-slate-900 dark:text-white tracking-tight">
+                  The Reviewer in Action
+                </h3>
+                <p className="text-sm text-slate-600 dark:text-slate-400 mt-0.5">
+                  Complete walkthrough of setup and automated PR analysis.
+                </p>
+              </div>
+            </div>
+
+            {/* Iframe Container */}
+            <div className="relative w-full bg-black flex items-center justify-center overflow-hidden" style={{ aspectRatio: '16/9' }}>
+              <div className="absolute inset-0 bg-orange-600/10 dark:bg-orange-600/20 mix-blend-overlay pointer-events-none group-hover:opacity-0 transition-opacity duration-500 z-10" />
+              <iframe 
+                src="https://drive.google.com/file/d/1udJzC2bGgnPLA-LFpv1qo2_jzE8DPz7V/preview" 
+                className="w-full h-full border-none rounded-b-xl"
+                allow="autoplay"
+                allowFullScreen
+              />
+            </div>
+          </div>
         </div>
       </div>
     </section>
   );
 };
-
-const DemoCard = ({ title, subtitle, videoSrc, icon: Icon, id }) => (
-  <div
-    data-testid={`demo-card-${id}`}
-    className="group relative overflow-hidden rounded-xl border border-slate-200 dark:border-white/10 bg-slate-50 dark:bg-[#0f0f0f] shadow-sm transition-all duration-300 hover:border-orange-500/40"
-  >
-    {/* Header */}
-    <div className="flex items-center gap-4 px-6 py-5 border-b border-slate-200 dark:border-white/5">
-      <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-orange-200 dark:border-orange-500/30 bg-orange-100 dark:bg-orange-500/10 text-orange-600 dark:text-orange-400">
-        <Icon className="h-5 w-5" strokeWidth={2} />
-      </div>
-      <div>
-        <h3 className="font-display text-lg font-semibold text-slate-900 dark:text-white tracking-tight">
-          {title}
-        </h3>
-        <p className="text-sm text-slate-600 dark:text-slate-400 mt-0.5">
-          {subtitle}
-        </p>
-      </div>
-    </div>
-
-    {/* Video Container */}
-    <div className="relative aspect-video bg-black flex items-center justify-center overflow-hidden">
-      <div className="absolute inset-0 bg-orange-600/10 dark:bg-orange-600/20 mix-blend-overlay pointer-events-none group-hover:opacity-0 transition-opacity duration-500 z-10" />
-      <video
-        className="w-full h-full object-cover rounded-b-xl"
-        controls
-        playsInline
-        preload="metadata"
-      >
-        <source src={videoSrc} type="video/mp4" />
-        Your browser does not support the video tag.
-      </video>
-    </div>
-  </div>
-);
